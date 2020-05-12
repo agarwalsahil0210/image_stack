@@ -48,7 +48,7 @@ class _SecondPageState extends State<SecondPage> {
                   children: <Widget>[
                     Image(
                       image: NetworkImage(imgurls.elementAt(index)),
-                      height: 150.0,
+                      height: 130.0,
                       width: 200.0,
                       fit: BoxFit.cover,
                     ),

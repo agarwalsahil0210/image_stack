@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage>
             title: new Text('Image Stack'),
             backgroundColor: Colors.white70,
             bottom: new TabBar(controller: controller, tabs: <Widget>[
-              new Tab(text: "Nature",),
+              new Tab(text: "Flowers",),
               new Tab(text: "Cats",),
             ])),
         body: new TabBarView(
