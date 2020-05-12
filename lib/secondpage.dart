@@ -12,6 +12,7 @@ class SecondPage extends StatefulWidget {
 class _SecondPageState extends State<SecondPage> {
   List data = [];
   List<String> imgurls = [];
+  List<String> description = [];
   bool showimg = false;
 
   getData() async {
@@ -27,6 +28,9 @@ class _SecondPageState extends State<SecondPage> {
   assign() {
     for (var i = 0; i < data.length; i++) {
       imgurls.add(data.elementAt(i)["urls"]["regular"]);
+      !(data.elementAt(i)["description"] == null)
+          ? description.add(data.elementAt(i)["description"])
+          : description.add(data.elementAt(i)["alt_description"]);
     }
   }
 
@@ -36,18 +40,27 @@ class _SecondPageState extends State<SecondPage> {
     return Container(
         child: GridView.count(
       crossAxisCount: 2,
-      children: List.generate(data.length, (index) {
-        return Center(
-          child: !showimg
-              ? CircularProgressIndicator()
-              : Image(
-                  image: NetworkImage(imgurls.elementAt(index)),
-                  height: 150.0,
-                  width: 150.0,
-                  fit: BoxFit.cover,
-                ),
-        );
-      }),
+          children: List.generate(data.length, (index) {
+            return Center(
+                child: !showimg
+                    ? CircularProgressIndicator()
+                    : Column(
+                  children: <Widget>[
+                    Image(
+                      image: NetworkImage(imgurls.elementAt(index)),
+                      height: 150.0,
+                      width: 200.0,
+                      fit: BoxFit.cover,
+                    ),
+                    Container(
+                      child: !(description.elementAt(index) == null)?
+                      Text(description.elementAt(index)):
+                      Text("No Desciption"),
+                    )
+                  ],
+                ));
+          }),
+
     ));
   }
 }

@@ -12,6 +12,7 @@ class FirstPage extends StatefulWidget {
 class _FirstPageState extends State<FirstPage> {
   List data = [];
   List<String> imgurls = [];
+  List<String> description = [];
   bool showimg = false;
 
   getData() async {
@@ -27,6 +28,9 @@ class _FirstPageState extends State<FirstPage> {
   assign() {
     for (var i = 0; i < data.length; i++) {
       imgurls.add(data.elementAt(i)["urls"]["regular"]);
+      !(data.elementAt(i)["description"] == null)
+          ? description.add(data.elementAt(i)["description"])
+          : description.add(data.elementAt(i)["alt_description"]);
     }
   }
 
@@ -38,15 +42,21 @@ class _FirstPageState extends State<FirstPage> {
         crossAxisCount: 2,
         children: List.generate(data.length, (index) {
           return Center(
-            child: !showimg
-                ? CircularProgressIndicator()
-                : Image(
-                    image: NetworkImage(imgurls.elementAt(index)),
-                    height: 150.0,
-                    width: 200.0,
-                    fit: BoxFit.cover,
-                  ),
-          );
+              child: !showimg
+                  ? CircularProgressIndicator()
+                  : Column(
+                      children: <Widget>[
+                        Image(
+                          image: NetworkImage(imgurls.elementAt(index)),
+                          height: 150.0,
+                          width: 200.0,
+                          fit: BoxFit.cover,
+                        ),
+                        Container(
+                          child: Text(description.elementAt(index)),
+                        )
+                      ],
+                    ));
         }),
       ),
     );
