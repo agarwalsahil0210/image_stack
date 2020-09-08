@@ -2,7 +2,13 @@
 
 A new Flutter application.
 
+## Screenshot
+---
+![Image1](Screenshot.jpg) 
+
+
 ## Getting Started
+---
 
 This project is a starting point for a Flutter application.
 
