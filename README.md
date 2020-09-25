@@ -1,6 +1,7 @@
 # imagestack
 
-A new Flutter application.
+A basic app to display collection of images using unsplash api.
+![](https://img.shields.io/badge/Dart-Flutter-blue.svg?style=for-the-badge&logo=flutter)
 
 ## Screenshot
 ---
@@ -20,3 +21,5 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+---
+⭐ Star this repo if you like the app.
